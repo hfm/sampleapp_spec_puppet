@@ -13,7 +13,13 @@ describe port(80) do
   it { should be_listening }
 end
 
+describe file('/etc/nginx/nginx.conf') do
+  it { should be_file }
+  it { should contain "user\s*okkun\s*appuser" }
+end
+
 describe file('/etc/nginx/conf.d/rails.conf') do
   it { should be_file }
+  it { should contain "upstream\s*backend" }
   it { should contain "server_name app001.okkun.pb" }
 end

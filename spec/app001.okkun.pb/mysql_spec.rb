@@ -13,6 +13,10 @@ describe port(3306) do
   it { should be_listening }
 end
 
+describe file('/var/lib/mysql/mysql.sock') do
+  it { should be_socket }
+end
+
 describe file('/etc/my.cnf') do
   it { should be_file }
   it { should contain("utf8").from(/character-set-server/).to(/utf8/) }
