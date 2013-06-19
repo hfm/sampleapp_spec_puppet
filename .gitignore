@@ -1,0 +1,4 @@
+.rspec
+/.bundle
+/bundle
+/spec/tmp/*
