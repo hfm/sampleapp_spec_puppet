@@ -4,7 +4,7 @@ require 'net/ssh'
 require 'highline/import'
 
 include Serverspec::Helper::Ssh
-include Serverspec::Helper::Redhat
+include Serverspec::Helper::RedHat
 
 RSpec.configure do |c|
   if ENV['ASK_SUDO_PASSWORD']
@@ -24,8 +24,12 @@ RSpec.configure do |c|
       c.ssh.close if c.ssh
       c.host  = host
       options = Net::SSH::Config.for(c.host)
-      user    = options[:user] || Etc.getlogin
-      
+      user    = options[:user] || "okkun"
+      if ENV['ASK_LOGIN_PASSWORD']
+        options[:password] = ask("\nEnter login password: ") { |q| q.echo = false }
+      else
+        options[:password] = ENV['LOGIN_PASSWORD']
+      end
       c.ssh   = Net::SSH.start(c.host, user, options)
     end
   end
