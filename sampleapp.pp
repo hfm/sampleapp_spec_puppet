@@ -63,3 +63,14 @@ service { 'mysqld':
   enable     => true,
   hasrestart => true
 }
+
+file { '/etc/my.cnf':
+  ensure  => present,
+  owner   => root,
+  group   => root,
+  mode    => '0644',
+  content => template('my.cnf'),
+  require => Package['mysqld'],
+  notify  => Service['mysqld']
+}
+
