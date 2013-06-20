@@ -43,7 +43,7 @@ file { '/etc/nginx/nginx.conf':
   owner   => root,
   group   => root,
   mode    => '0644',
-  content => template('nginx.conf'),
+  content => template('/home/hfm/sampleapp_spec_puppet/nginx.conf'),
   require => Package['nginx'],
   notify  => Service['nginx']
 }
@@ -53,7 +53,7 @@ file { '/etc/nginx/conf.d/rails.conf':
   owner   => root,
   group   => root,
   mode    => '0644',
-  content => template('rails.conf'),
+  content => template('/home/hfm/sampleapp_spec_puppet/rails.conf'),
   require => Package['nginx'],
   notify  => Service['nginx']
 }
@@ -63,3 +63,14 @@ service { 'mysqld':
   enable     => true,
   hasrestart => true
 }
+
+file { '/etc/my.cnf':
+  ensure  => present,
+  owner   => root,
+  group   => root,
+  mode    => '0644',
+  content => template('/home/hfm/sampleapp_spec_puppet/my.cnf'),
+  require => Package['mysql-server'],
+  notify  => Service['mysqld']
+}
+
