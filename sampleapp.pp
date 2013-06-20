@@ -1,32 +1,8 @@
 $packages = [
-  'autoconf',
-  'automake',
-  'binutils',
-  'bison',
-  'flex',
-  'gcc',
-  'gcc-c++',
-  'gettext',
-  'libtool',
-  'make',
-  'patch',
-  'pkgconfig',
-  'redhat-rpm-config',
-  'rpm-build',
-  'byacc',
-  'cscope',
-  'ctags',
-  'diffstat',
-  'doxygen',
-  'elfutils',
-  'gcc-gfortran',
   'git',
-  'indent',
-  'intltool',
-  'patchutils',
-  'rcs',
-  'systemtap',
-  'cmake',
+  'mysql-devel',
+  'mysql-server',
+  'nginx',
   'zsh'
 ]
 
@@ -55,6 +31,26 @@ service { 'nginx':
   hasrestart => true,
   require    => File['/etc/nginx/nginx.conf'],
   subscribe  => File['/etc/nginx/nginx.conf']
+}
+
+file { '/etc/nginx/nginx.conf':
+  ensure  => present,
+  owner   => root,
+  group   => root,
+  mode    => '0644',
+  content => template('nginx.conf'),
+  require => Package['nginx'],
+  notify  => Service['nginx']
+}
+
+file { '/etc/nginx/conf.d/rails.conf':
+  ensure  => present,
+  owner   => root,
+  group   => root,
+  mode    => '0644',
+  content => template('rails.conf'),
+  require => Package['nginx'],
+  notify  => Service['nginx']
 }
 
 service { 'mysqld':
