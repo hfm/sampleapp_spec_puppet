@@ -25,6 +25,11 @@ group { 'appuser':
   gid    => 1000
 }
 
+$nginx_user = 'nginx'
+$server_port = 80
+$server_name = '_'
+$root_directory = '/var/www/sample_app/public'
+
 service { 'nginx':
   ensure     => running,
   enable     => true,
