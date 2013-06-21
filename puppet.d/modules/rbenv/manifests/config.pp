@@ -4,7 +4,6 @@ class rbenv::config {
     command => "ln -s ${install_path}/bin/rbenv /usr/bin/rbenv",
     user    => 'root',
     group   => 'appuser',
-    creates => $install_path,
     path    => ['/bin', '/usr/bin']
   }
 }

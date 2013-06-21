@@ -3,5 +3,5 @@ class rbenv {
   include rbenv::config
 
   Class['rbenv::install']
-  ->Class['rbenv::config']
+  -> Class['rbenv::config']
 }
