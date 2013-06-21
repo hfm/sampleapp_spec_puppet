@@ -3,7 +3,7 @@ class nginx::service {
     ensure     => running,
     enable     => true,
     hasrestart => true,
-    notify     => File['/etc/nginx/nginx.conf'],
+    subscribe  => File['/etc/nginx/nginx.conf'],
     require    => File['/etc/nginx/nginx.conf']
   }
 }
