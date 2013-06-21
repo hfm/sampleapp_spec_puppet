@@ -2,4 +2,3 @@
 /.bundle
 /bundle
 /spec/tmp/*
-site.pp
