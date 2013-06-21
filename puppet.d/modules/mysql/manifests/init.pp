@@ -3,6 +3,8 @@ class mysql {
   include mysql::config
   include mysql::service
   include mysql::setup
+  include ::var
+  include ::passwd
 
   Class['mysql::install']
   -> Class['mysql::config']
