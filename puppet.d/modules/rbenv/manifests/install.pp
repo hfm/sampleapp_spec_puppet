@@ -6,7 +6,6 @@ class rbenv::install {
     group   => 'appuser',
     creates => $install_path,
     path    => ['/usr/bin', '/usr/sbin'],
-    timeout => 100,
-    require => Package['git']
+    timeout => 100
   }
 }
