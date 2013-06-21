@@ -5,7 +5,7 @@ class rbenv::install {
     user    => 'root',
     group   => 'appuser',
     creates => $install_path,
-    path    => ['/usr/local/rbenv/bin'],
+    path    => ['/bin', '/usr/bin'],
     timeout => 100
   }
 }
