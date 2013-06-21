@@ -6,12 +6,21 @@ class mysql::setup {
     require => Service['mysqld']
   }
 
+  $user = 'okkun'
+  $password = 'hogehoge'
+  $name = 'sampleapp'
+
   exec { "create-${name}-db":
-    unless  => "mysql -u$::{user} -p$::{password} $::{name}",
-    command => "mysql -uroot -p$::{mysql_password} -e
-      \"CREATE DATABASE $::{name};
-      GRANT ALL ON $::{name}.* TO $::{user}@localhost
-      IDENTIFIED BY '$::{password}';\"",
+    unless  => "mysql -uroot ${name}",
+    command => "mysql -uroot -e \"create database ${name};\"",
     require => Service['mysqld']
+  }
+
+  exec { "grant-${name}-db":
+    unless  => "mysql -u${user} -p${password} ${name}",
+    command => "mysql -uroot -e
+      \"GRANT ALL ON ${name}.* TO ${user}@localhost
+      IDENTIFIED BY '${password}';\"",
+    require => [Service['mysqld'], Exec["create-${name}-db"]]
   }
 }
