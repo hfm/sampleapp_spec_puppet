@@ -1,7 +1,7 @@
 class sampleapp::app_dir {
   file { '/var/www':
     ensure  => directory,
-    user    => 'okkun',
+    user    => 'root',
     group   => 'appuser'
   }
 }
