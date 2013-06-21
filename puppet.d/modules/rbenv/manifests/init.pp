@@ -6,6 +6,6 @@ class rbenv {
 
   Class['rbenv::install']
   -> Class['rbenv::config']
-  -> Class['rbenv::rubybuild']
-  -> Class['rbenv::ruby200p195']
+  ~> Class['rbenv::rubybuild']
+  ~> Class['rbenv::ruby200p195']
 }
