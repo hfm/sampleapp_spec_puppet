@@ -8,19 +8,19 @@ class mysql::setup {
 
   $user = 'okkun'
   $password = 'hogehoge'
-  $name = 'sampleapp'
+  $dbname = 'sampleapp'
 
-  exec { "create-${name}-db":
-    unless  => "mysql -uroot ${name}",
-    command => "mysql -uroot -e \"create database ${name};\"",
+  exec { "create-${dbname}-db":
+    unless  => "mysql -uroot ${dbname}",
+    command => "mysql -uroot -e \"create database ${dbname};\"",
     require => Service['mysqld']
   }
 
-  exec { "grant-${name}-db":
-    unless  => "mysql -u${user} -p${password} ${name}",
+  exec { "grant-${dbname}-db":
+    unless  => "mysql -u${user} -p${password} ${dbname}",
     command => "mysql -uroot -e
-      \"GRANT ALL ON ${name}.* TO ${user}@localhost
+      \"GRANT ALL ON ${dbname}.* TO ${user}@localhost
       IDENTIFIED BY '${password}';\"",
-    require => [Service['mysqld'], Exec["create-${name}-db"]]
+    require => [Service['mysqld'], Exec["create-${dbname}-db"]]
   }
 }
