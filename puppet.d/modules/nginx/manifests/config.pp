@@ -9,7 +9,7 @@ class nginx::config {
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('/home/hfm/sampleapp_spec_puppet/nginx.conf'),
+    content => template('nginx/nginx.conf'),
     notify  => Service['nginx'],
     require => Package['nginx']
   }
@@ -19,7 +19,7 @@ class nginx::config {
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('/home/hfm/sampleapp_spec_puppet/rails.conf'),
+    content => template('nginx/rails.conf'),
     notify  => Service['nginx'],
     require => Package['nginx']
   }
