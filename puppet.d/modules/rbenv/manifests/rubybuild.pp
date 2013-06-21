@@ -1,5 +1,6 @@
 class rbenv::rubybuild {
-  file { 'rbenv::plugins':
+  $plugin_path = '/usr/local/rbenv/plugins/'
+  file { '$plugin_path':
     present => true,
     owner   => 'root',
     group   => 'appuser'
