@@ -1,7 +1,7 @@
 class rbenv::ruby200p247 {
   exec { 'rbenv::install200p247':
-    unless      => 'test -d /home/okkun/.rbenv/versions/2.0.0-p247',
-    command     => 'rbenv install -v 2.0.0-p247',
+    unless      => 'test -d /.rbenv/versions/2.0.0-p247',
+    command     => 'rbenv install 2.0.0-p247',
     user        => 'root',
     group       => 'appuser',
     path        => ['/bin', '/usr/bin', '/usr/local/bin'],
@@ -16,5 +16,15 @@ class rbenv::ruby200p247 {
     path        => ['/bin', '/usr/bin', '/usr/local/bin'],
     timeout     => 100,
     require     => Exec['rbenv::install200p247']
+  }
+
+  exec { 'rbenv::bundler':
+    unless      => '/.rbenv/shims/gem list | grep bundler',
+    command     => '/.rbenv/shims/gem install bundler',
+    user        => 'root',
+    group       => 'appuser',
+    path        => ['/bin', '/usr/bin', '/usr/local/bin'],
+    timeout     => 100,
+    require     => Exec['rbenv::global200p247']
   }
 }
