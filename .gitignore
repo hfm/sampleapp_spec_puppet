@@ -2,4 +2,6 @@
 /.bundle
 /bundle
 /spec/tmp/*
-site.pp
+passwd.pp
+/bin
+/vendor
