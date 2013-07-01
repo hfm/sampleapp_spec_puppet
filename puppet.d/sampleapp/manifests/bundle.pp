@@ -1,12 +1,32 @@
 class sampleapp::bundle {
   $app_path = '/var/www/sample_app'
+
   exec { 'sampleapp::bundle':
-    command => "bundle install --path=vendor/bundle",
-    user    => 1000,
+    command => "bundle install",
+    user    => root,
     group   => 1000,
-    creates => $app_path,
     cwd     => $app_path,
-    path    => ['/bin', '/usr/bin'],
-    timeout => 100
+    path    => ['/usr/local/ruby-2.0.0-p247/bin', '/bin', '/usr/bin'],
+    timeout => 0
+  }
+
+  exec { 'sampleapp::update':
+    command => "bundle update",
+    user    => root,
+    group   => 1000,
+    cwd     => $app_path,
+    path    => ['/usr/local/ruby-2.0.0-p247/bin', '/bin', '/usr/bin'],
+    timeout => 0,
+    require => Exec['sampleapp::bundle']
+  }
+
+  exec { 'sampleapp::dbmigrate':
+    command => 'bundle exec rake db:migrate RAILS_ENV=production',
+    user    => root,
+    group   => 1000,
+    cwd     => $app_path,
+    path    => ['/usr/local/ruby-2.0.0-p247/bin', '/bin', '/usr/bin'],
+    timeout => 0,
+    require => Exec['sampleapp::update']
   }
 }
