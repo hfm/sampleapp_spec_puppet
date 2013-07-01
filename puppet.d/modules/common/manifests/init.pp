@@ -4,6 +4,7 @@ class common {
     'git',
     'zsh',
     'gcc',
+    'gcc-c++',
     'make',
   ]
   
