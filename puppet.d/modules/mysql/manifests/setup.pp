@@ -1,9 +1,9 @@
 class mysql::setup {
   # 実際これは良くないけど、今回だけ
-  $user = 'okkun'
-  $name = 'app'
-  $password = 'hogehoge'
   $mysql_password = 'fugafuga'
+  $user_name = 'okkun'
+  $app_name = 'sampleapp'
+  $app_password = 'hogehoge'
 
   exec { 'set-mysql-password':
     unless  => "mysqladmin -uroot -p${mysql_password} status",
@@ -13,12 +13,17 @@ class mysql::setup {
   }
 
   exec { "create-${name}-db":
-    unless  => "mysql -u${user} -p${password} ${name}",
-    command => "mysql -uroot -p${mysql_password} -e
-                \"CREATE DATABASE ${name};
-                GRANT ALL ON ${name}.* TO ${user}@localhost
-                IDENTIFIED BY '${password}';\"",
-    require => Service['mysqld'],
+    unless  => "mysql -uroot -p${mysql_password} -e \"show databases;\" | grep ${app_name}",
+    path    => ['/bin', '/usr/bin'],
+    command => "mysql -uroot -p${mysql_password} -e \"CREATE DATABASE ${app_name};\"",
+                #GRANT ALL ON ${app_name}.* TO ${user_name}@localhost IDENTIFIED BY '${app_password}';\"",
     require => Exec['set-mysql-password']
+  }
+
+  exec { "create-${name}-user":
+    unless  => "mysql -u${user_name} -p${app_password} ${app_name}",
+    path    => ['/bin', '/usr/bin'],
+    command => "mysql -uroot -p${mysql_password} -e \"GRANT ALL ON ${app_name}.* TO ${user_name}@localhost IDENTIFIED BY '${app_password}';\"",
+    require => Exec["create-${name}-db"]
   }
 }
