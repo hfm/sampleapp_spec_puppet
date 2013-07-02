@@ -7,6 +7,7 @@ class common {
     'gcc-c++',
     'make',
     'monit',
+    'libselinux-ruby',
   ]
   
   package { $packages:
