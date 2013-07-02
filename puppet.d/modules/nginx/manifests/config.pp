@@ -9,7 +9,7 @@ class nginx::config {
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('nginx/nginx.conf'),
+    content => template('nginx/nginx.conf.erb'),
     notify  => Service['nginx'],
     require => Package['nginx']
   }
@@ -19,7 +19,7 @@ class nginx::config {
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('nginx/rails.conf'),
+    content => template('nginx/rails.conf.erb'),
     notify  => Service['nginx'],
     require => Package['nginx']
   }
