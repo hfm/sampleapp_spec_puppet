@@ -6,6 +6,7 @@ class common {
     'gcc',
     'gcc-c++',
     'make',
+    'monit',
   ]
   
   package { $packages:
