@@ -1,7 +1,7 @@
 .rspec
 /.bundle
-/bundle
 /spec/tmp/*
 passwd.pp
 /bin
 /vendor
+Gemfile.lock
