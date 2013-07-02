@@ -4,7 +4,7 @@ class sampleapp::checkout {
   exec { 'sampleapp::install':
     command => "git clone https://github.com/Tacahilo/sample_app.git ${app_path}",
     user    => 'root',
-    group   => 'appuser',
+    group   => 1000,
     creates => $app_path,
     path    => ['/bin', '/usr/bin'],
     timeout => 100
