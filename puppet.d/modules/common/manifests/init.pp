@@ -6,7 +6,6 @@ class common {
     'gcc',
     'gcc-c++',
     'make',
-    'monit',
     'libselinux-ruby',
   ]
   

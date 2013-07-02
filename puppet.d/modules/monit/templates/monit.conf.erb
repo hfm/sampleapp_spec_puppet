@@ -1,0 +1,9 @@
+set daemon <%= daemon_time %>
+set logfile syslog facility log_daemon                       
+set idfile <%= idfile %>
+set statefile <%= statefile %>
+set eventqueue
+    basedir <%= event_basedir %>
+    slots 100
+
+include /etc/monit.d/*
