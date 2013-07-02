@@ -1,8 +1,8 @@
-class monit::unicorn {
+class monit::config {
   $daemon_time = 60
   $idfile = '/var/.monit.id'
   $statefile = '/var/.monit.state'
-  $event_basebir = '/var/monit'
+  $event_basedir = '/var/monit'
 
   file{ '/etc/monit.conf':
     ensure  => present,

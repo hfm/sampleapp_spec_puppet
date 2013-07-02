@@ -1,24 +1,24 @@
 #!/bin/sh
 # unicorn init scripts
+#
+# https://gist.github.com/shapeshed/1221753
+#
 
 set -e
 
-export PATH=/usr/local/ruby-2.0.0-p247/bin:$PATH
-RAILS_ROOT=/var/www/sample_app
-PID=$RAILS_ROOT/unicorn.pid
-CMD="cd $RAILS_ROOT; unicorn -D -c $RAILS_ROOT/config/unicorn.rb -E production"
-action="$1"
+TIMEOUT=${TIMEOUT-60}
+export PATH=<%= @sh_path %>
+RAILS_ROOT=<%= @rails_root %>
+PID=<%= @unicorn_pid %>
+CMD=<%= @cmd %>
 
+action="$1"
 set -u
 
 old_pid="$PID.oldbin"
 
 cd $APP_ROOT || exit 1
  
-##
-## https://gist.github.com/shapeshed/1221753
-##
-
 sig () {
   test -s "$PID" && kill -$1 `cat $PID`
 }
