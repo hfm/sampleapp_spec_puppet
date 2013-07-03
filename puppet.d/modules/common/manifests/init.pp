@@ -1,15 +1,7 @@
 class common {
+  include common::packages
+  include common::pubkey
 
-  $packages = [
-    'git',
-    'zsh',
-    'gcc',
-    'gcc-c++',
-    'make',
-    'monit',
-  ]
-  
-  package { $packages:
-    ensure => installed
-  }
+  Class['common::packages']
+  Class['common::pubkey']
 }

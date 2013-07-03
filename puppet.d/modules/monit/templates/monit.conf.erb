@@ -1,0 +1,12 @@
+set daemon <%= @daemon_time %>
+set logfile syslog facility log_daemon                       
+set idfile <%= @idfile %>
+set statefile <%= @statefile %>
+set eventqueue
+    basedir <%= @event_basedir %>
+    slots 100
+set httpd port 2812 and
+    use address localhost
+    allow localhost
+
+include /etc/monit.d/*

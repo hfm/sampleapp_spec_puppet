@@ -17,4 +17,12 @@ class ruby::ruby200p247 {
     timeout     => 100,
     require     => Exec['ruby::install']
   }
+
+  file { '/etc/profile.d/ruby200p247.sh':
+    ensure  => present,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => template('ruby/ruby200p247.sh')
+  }
 }

@@ -29,4 +29,14 @@ class sampleapp::bundle {
     timeout => 0,
     require => Exec['sampleapp::update']
   }
+
+  exec { 'sampleapp::assetsprecompile':
+    command => 'bundle exec rake assets:precompile RAILS_ENV=production',
+    user    => root,
+    group   => 1000,
+    cwd     => $app_path,
+    path    => ['/usr/local/ruby-2.0.0-p247/bin', '/bin', '/usr/bin'],
+    timeout => 0,
+    require => Exec['sampleapp::dbmigrate']
+  }
 }
