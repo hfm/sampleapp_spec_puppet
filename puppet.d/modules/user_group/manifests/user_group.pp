@@ -4,7 +4,7 @@ class user_group::setup {
     comment    => 'okkun',
     home       => '/home/okkun',
     managehome => true,
-    shell      => '/bin/zsh',
+    shell      => '/bin/bash',
     uid        => 1000
     gid        => 'appuser'
   }
