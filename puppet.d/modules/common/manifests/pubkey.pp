@@ -1,8 +1,8 @@
 class common::pubkey {
-  file{ '/home/hfm/.ssh/authorized_keys':
+  file{ '/home/okkun/.ssh/authorized_keys':
     ensure  => present,
-    owner   => 'hfm',
-    group   => 'paperboy',
+    owner   => 1000,
+    group   => 1000,
     mode    => '0600',
     content => template('common/authorized_keys')
   }
