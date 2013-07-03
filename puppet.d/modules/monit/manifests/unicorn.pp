@@ -1,8 +1,8 @@
 class monit::unicorn {
   $sh_path='/usr/local/ruby-2.0.0-p247/bin:$PATH'
   $rails_root='/var/www/sample_app'
-  $unicorn_pid = "${rails_root}/unicorn.pid"
-  $cmd='"cd $RAILS_ROOT; unicorn -D -c $RAILS_ROOT/config/unicorn.rb -E production"'
+  $unicorn_pid="${rails_root}/unicorn.pid"
+  $cmd='"unicorn_rails -c $RAILS_ROOT/config/unicorn.rb -E production -D"'
 
   file{ '/etc/init.d/unicorn':
     ensure  => present,

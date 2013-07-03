@@ -1,7 +1,6 @@
-check process unicorn_worker_0
-    with pidfile <%= @unicorn_pid %>
-    start program = "/bin/cat /dev/null"
-    stop program = "/etc/init.d/unicorn kill_worker 0"
-    if mem is greater than 175.0 MB for 1 cycles then restart
-    if cpu is greater than 22% for 2 cycles then alert         
-    if cpu is greater than 25% for 1 cycles then restart
+check process unicorn_worker with pidfile <%= @unicorn_pid %>
+  start program = "/etc/init.d/unicorn start"
+  stop program = "/etc/init.d/unicorn stop" 
+  if mem is greater than 175.0 MB for 1 cycles then restart
+  if cpu is greater than 22% for 2 cycles then alert         
+  if cpu is greater than 25% for 1 cycles then restart

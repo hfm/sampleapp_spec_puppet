@@ -17,7 +17,7 @@ set -u
 
 old_pid="$PID.oldbin"
 
-cd $APP_ROOT || exit 1
+cd $RAILS_ROOT || exit 1
  
 sig () {
   test -s "$PID" && kill -$1 `cat $PID`
@@ -30,7 +30,7 @@ oldsig () {
 case $action in
 start)
   sig 0 && echo >&2 "Already running" && exit 0
-  su - rails -c "$CMD"
+  su - root -c  "$CMD"
   ;;
 stop)
   sig QUIT && exit 0
@@ -43,7 +43,7 @@ force-stop)
 restart|reload)
   sig HUP && echo reloaded OK && exit 0
   echo >&2 "Couldn't reload, starting '$CMD' instead"
-  su - rails -c "$CMD"
+  su - root -c  "$CMD"
   ;;
 upgrade)
   if sig USR2 && sleep 20 && sig 0 && oldsig QUIT
@@ -63,7 +63,7 @@ upgrade)
     exit 0
   fi
   echo >&2 "Couldn't upgrade, starting '$CMD' instead"
-  su - rails -c "$CMD"
+  su - root -c  "$CMD"
   ;;
 kill_worker)
   workersig QUIT $2 && exit 0
