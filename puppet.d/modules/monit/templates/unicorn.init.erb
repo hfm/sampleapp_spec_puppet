@@ -11,7 +11,7 @@ export PATH=<%= @sh_path %>
 RAILS_ROOT=<%= @rails_root %>
 PID=<%= @unicorn_pid %>
 CMD=<%= @cmd %>
-APPUSER=okkun
+APPUSER=<%= @appuser %>
 
 action="$1"
 set -u
