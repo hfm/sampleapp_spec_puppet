@@ -2,7 +2,7 @@ class nginx::config {
   $nginx_user = 'nginx'
   $server_port = 80
   $server_name = '_'
-  $root_directory = '/var/www/sample_app/public'
+  $root_directory = '/var/www/rails/current/public'
 
   file { '/etc/nginx/nginx.conf':
     ensure  => present,
