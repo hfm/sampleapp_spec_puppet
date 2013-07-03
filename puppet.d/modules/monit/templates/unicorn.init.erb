@@ -44,7 +44,7 @@ force-stop)
 restart|reload)
   sig HUP && echo reloaded OK && exit 0
   echo >&2 "Couldn't reload, starting '$CMD' instead"
-  su - $APPUSER -c  "$CMD"
+  su - $APPUSER -c "$CMD"
   ;;
 upgrade)
   if sig USR2 && sleep 20 && sig 0 && oldsig QUIT
