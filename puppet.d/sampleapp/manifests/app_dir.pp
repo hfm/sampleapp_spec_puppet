@@ -1,7 +1,7 @@
 class sampleapp::app_dir {
   file { '/var/www':
-    ensure  => present,
-    owner   => 'root',
+    ensure  => directory,
+    owner   => 1000,
     group   => 1000
   }
 }
