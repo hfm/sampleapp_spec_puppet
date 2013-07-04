@@ -6,6 +6,7 @@ class common::packages {
     'gcc-c++',
     'make',
     'libselinux-ruby',
+    'memcached',
   ]
   
   package { $packages:
