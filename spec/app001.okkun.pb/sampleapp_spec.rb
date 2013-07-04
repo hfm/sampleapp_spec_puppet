@@ -21,6 +21,10 @@ describe file('/var/www/rails/current/config/deploy.rb') do
 end
 
 describe "unicorn" do
+  describe service('unicorn_worker') do
+    it { should be_monitored_by('monit') }
+  end
+
   describe file('/var/www/rails/current/config/unicorn.rb') do
     it { should be_file }
   end
