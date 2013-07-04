@@ -1,7 +1,6 @@
 class common::packages {
   $packages = [
     'git',
-    'zsh',
     'gcc',
     'gcc-c++',
     'make',

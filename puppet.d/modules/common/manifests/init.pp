@@ -3,5 +3,5 @@ class common {
   include common::pubkey
 
   Class['common::packages']
-  Class['common::pubkey']
+  -> Class['common::pubkey']
 }

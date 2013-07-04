@@ -5,8 +5,8 @@ class user_group::setup {
     home       => '/home/okkun',
     managehome => true,
     shell      => '/bin/bash',
-    uid        => 1000
-    gid        => 'appuser'
+    uid        => 1000,
+    gid        => 1000
   }
   
   group { 'appuser':
