@@ -122,4 +122,4 @@ root	ALL=(ALL) 	ALL
 %ec-dev                 ALL=(ALL)       ALL
 %puboo-dev              ALL=(ALL)       ALL
 
-okkun     ALL=NOPASSWD: /etc/init.d/unicorn
+okkun   ALL=(ALL)       NOPASSWD: /etc/init.d/unicorn, /usr/bin/puppet
