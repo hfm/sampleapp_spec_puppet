@@ -1,4 +1,4 @@
-class memcache::packages {
+class memcached::install {
   package { 'memcached':
     ensure => installed
   }
