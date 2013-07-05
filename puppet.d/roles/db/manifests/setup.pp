@@ -1,4 +1,4 @@
-class mysql::setup {
+class db::mysql::setup {
   # 実際これは良くないけど、今回だけ
   $mysql_password = 'fugafuga'
   $user_name = 'okkun'
