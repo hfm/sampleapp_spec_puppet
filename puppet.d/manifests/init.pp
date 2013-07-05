@@ -13,14 +13,6 @@ group { 'appuser':
   gid    => 1000
 }
 
-file{ '/etc/sudoers':
-  ensure  => present,
-  owner   => root,
-  group   => root,
-  mode    => '0440',
-  content => template('sudoers')
-}
-
 include common
 include nginx
 include mysql
