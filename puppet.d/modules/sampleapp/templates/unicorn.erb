@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # unicorn init scripts
 #
 # https://gist.github.com/shapeshed/1221753
@@ -6,7 +6,6 @@
 
 set -e
 
-TIMEOUT=${TIMEOUT-60}
 export PATH=<%= @sh_path %>
 RAILS_ROOT=<%= @rails_root %>
 PID=<%= @unicorn_pid %>
@@ -31,7 +30,7 @@ oldsig () {
 case $action in
 start)
   sig 0 && echo >&2 "Already running" && exit 0
-  su - $APPUSER -c  "$CMD"
+  su - $APPUSER -c "$CMD"
   ;;
 stop)
   sig QUIT && exit 0
