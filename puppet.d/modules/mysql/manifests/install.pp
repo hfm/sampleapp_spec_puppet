@@ -1,6 +1,6 @@
 class mysql::install {
   $packages = [
-  'mysql',
+  'mysql-devel',
   'mysql-server'
   ]
 
