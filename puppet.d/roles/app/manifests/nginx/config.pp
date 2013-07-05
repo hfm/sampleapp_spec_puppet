@@ -1,4 +1,4 @@
-class nginx::config {
+class app::nginx::config {
   $nginx_user = 'nginx'
   $server_port = 80
   $server_name = '_'
@@ -9,7 +9,7 @@ class nginx::config {
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('nginx/nginx.conf.erb'),
+    content => template('app/nginx/nginx.conf.erb'),
     notify  => Service['nginx'],
     require => Package['nginx']
   }
@@ -19,7 +19,7 @@ class nginx::config {
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('nginx/rails.conf.erb'),
+    content => template('app/nginx/rails.conf.erb'),
     notify  => Service['nginx'],
     require => Package['nginx']
   }
