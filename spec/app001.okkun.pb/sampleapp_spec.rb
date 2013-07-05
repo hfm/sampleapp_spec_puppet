@@ -29,7 +29,7 @@ describe "unicorn" do
     it { should be_file }
   end
 
-  describe file('/var/www/rails/current/tmp/unicorn.sock') do
+  describe file('/var/www/rails/current/run/unicorn.sock') do
     it { should be_socket }
   end
 end
