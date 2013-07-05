@@ -4,6 +4,7 @@ class common::packages {
     'gcc',
     'gcc-c++',
     'make',
+    'openssl-devel',
     'libselinux-ruby',
   ]
   

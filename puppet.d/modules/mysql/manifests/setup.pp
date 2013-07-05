@@ -12,18 +12,17 @@ class mysql::setup {
     require => Service['mysqld']
   }
 
-  exec { "create-${name}-db":
-    unless  => "mysql -uroot -p${mysql_password} -e \"show databases;\" | grep ${app_name}",
+  exec { "create-db":
+    unless  => "mysql -uroot -p${mysql_password} -e \"SHOW DATABASES;\" | grep ${app_name}",
     path    => ['/bin', '/usr/bin'],
     command => "mysql -uroot -p${mysql_password} -e \"CREATE DATABASE ${app_name};\"",
-                #GRANT ALL ON ${app_name}.* TO ${user_name}@localhost IDENTIFIED BY '${app_password}';\"",
     require => Exec['set-mysql-password']
   }
 
-  exec { "create-${name}-user":
+  exec { "create-user":
     unless  => "mysql -u${user_name} -p${app_password} ${app_name}",
     path    => ['/bin', '/usr/bin'],
     command => "mysql -uroot -p${mysql_password} -e \"GRANT ALL ON ${app_name}.* TO ${user_name}@localhost IDENTIFIED BY '${app_password}';\"",
-    require => Exec["create-${name}-db"]
+    require => Exec["create-db"]
   }
 }
