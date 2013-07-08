@@ -3,5 +3,5 @@ class app::common {
   include app::common::mysql
 
   Class['::common']
-  -> include['app::common::mysql']
+  -> Class['app::common::mysql']
 }
