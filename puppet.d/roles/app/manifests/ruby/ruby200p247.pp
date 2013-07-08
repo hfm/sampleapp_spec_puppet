@@ -23,6 +23,6 @@ class ruby::ruby200p247 {
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('ruby/ruby200p247.sh')
+    content => template('app/ruby/ruby200p247.sh')
   }
 }

@@ -1,4 +1,4 @@
-class sampleapp::unicorn {
+class app::sampleapp::unicorn {
   $sh_path='/usr/local/ruby-2.0.0-p247/bin:$PATH'
 
   $rails_root='/var/www/rails/current'
@@ -11,6 +11,6 @@ class sampleapp::unicorn {
     owner   => root,
     group   => root,
     mode    => '0755',
-    content => template('sampleapp/unicorn.erb')
+    content => template('app/sampleapp/unicorn.erb')
   }
 }
