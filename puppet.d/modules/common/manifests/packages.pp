@@ -6,6 +6,7 @@ class common::packages {
     'make',
     'openssl-devel',
     'libselinux-ruby',
+    'nc',
   ]
   
   package { $packages:
