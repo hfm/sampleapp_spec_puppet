@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe file('/var/www/rails') do
   it { should be_directory }
+  it { should be_grouped_into 'appuser' }
+  it { should be_owned_by 'okkun' }
+end
+
+describe file('/var/www/rails/shared') do
+  it { should be_directory }
+  it { should be_grouped_into 'appuser' }
+  it { should be_owned_by 'okkun' }
 end
 
 describe file('/var/www/rails/current/Gemfile') do
