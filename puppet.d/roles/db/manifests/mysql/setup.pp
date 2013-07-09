@@ -25,4 +25,11 @@ class db::mysql::setup {
     command => "mysql -uroot -p${mysql_password} -e \"GRANT ALL ON ${app_name}.* TO ${user_name}@localhost IDENTIFIED BY '${app_password}';\"",
     require => Exec["create-db"]
   }
+
+  exec { "create-user-remote":
+    unless  => "mysql -u${user_name} -p${app_password} ${app_name}",
+    path    => ['/bin', '/usr/bin'],
+    command => "mysql -uroot -p${mysql_password} -e \"GRANT ALL ON ${app_name}.* TO ${user_name}@"192.168.48.%" IDENTIFIED BY '${app_password}';\"",
+    require => Exec["create-user"]
+  }
 }
