@@ -1,9 +1,7 @@
 class db {
-  include db::user_group
-  include db::base
+  include ::base
   include db::mysql
 
-     Class['db::user_group']
-  -> Class['db::base']
+  Class['::base']
   -> Class['db::mysql']
 }

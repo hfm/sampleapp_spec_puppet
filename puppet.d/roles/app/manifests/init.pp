@@ -1,13 +1,13 @@
 class app {
-  include app::user_group
-  include app::base
+  include ::base
+  include app::basepackages
   include app::nginx
   include app::monit
   include app::ruby
   include app::sampleapp
 
-  Class['app::user_group']
-  -> Class['app::base']
+  Class['::base']
+  -> Class['app::basepackages']
   -> Class['app::nginx']
   -> Class['app::monit']
   -> Class['app::ruby']

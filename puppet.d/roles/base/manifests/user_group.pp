@@ -1,8 +1,8 @@
-class db::user_group {
-  user { 'okkun':
+class app::user_group {
+  user { 'app':
     ensure     => present,
-    comment    => 'okkun',
-    home       => '/home/okkun',
+    comment    => 'app',
+    home       => '/home/app',
     managehome => true,
     shell      => '/bin/bash',
     uid        => 1000,
