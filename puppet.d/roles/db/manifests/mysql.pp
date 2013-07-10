@@ -1,6 +1,7 @@
 class db::mysql {
-  include ::mysql
+  include ::mysql::install
   include db::mysql::config
+  include ::mysql::service
   include db::mysql::setup
 
      Class['::mysql::install']
