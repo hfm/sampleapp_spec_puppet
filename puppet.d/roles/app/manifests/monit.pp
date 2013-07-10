@@ -1,9 +1,9 @@
 class app::monit {
   include ::monit
-  include app::monit::unicorn
+  include app::monit::config
 
   Class['::monit::install']
   -> Class['::monit::config']
-  -> Class['app::monit::unicorn']
+  -> Class['app::monit::config']
   -> Class['::monit::service']
 }

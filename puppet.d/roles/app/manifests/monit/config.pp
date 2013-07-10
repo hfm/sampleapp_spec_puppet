@@ -1,4 +1,4 @@
-class app::monit::unicorn {
+class app::monit::config {
   $rails_root='/var/www/rails/current'
   $unicorn_pid="${rails_root}/tmp/pids/unicorn.pid"
 

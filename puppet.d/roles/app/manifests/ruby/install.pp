@@ -1,4 +1,4 @@
-class app::ruby::ruby200p247 {
+class app::ruby::install {
   exec { 'ruby::install':
     unless      => 'test -d /usr/local/ruby-2.0.0-p247',
     command     => 'ruby-build 2.0.0-p247 /usr/local/ruby-2.0.0-p247',
