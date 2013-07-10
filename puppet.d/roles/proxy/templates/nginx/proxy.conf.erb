@@ -1,0 +1,22 @@
+upstream proxy {
+  server app001.okkun.pb
+  server app002.okkun.pb
+}
+
+server {
+  client_max_body_size 4G;
+  listen <%= @server_port %>;
+  server_name <%= @server_name %>;
+  access_log /var/log/nginx/access.log main;
+  keepalive_timeout 5;
+
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_set_header Host $http_host;
+  proxy_redirect off;
+
+  location / {
+    proxy_pass http://proxy;
+  }
+}
