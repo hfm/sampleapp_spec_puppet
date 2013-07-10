@@ -1,4 +1,4 @@
-class base:user_group {
+class base::user_group {
   user { 'app':
     ensure     => present,
     comment    => 'app',
