@@ -1,0 +1,1 @@
+../app001.okkun.pb/db_spec.rb
