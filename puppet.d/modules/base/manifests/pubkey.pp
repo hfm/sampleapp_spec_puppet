@@ -1,4 +1,4 @@
-class common::pubkey {
+class base::pubkey {
   file{ '/home/okkun/.ssh':
     ensure  => directory,
     owner   => 1000,
@@ -11,7 +11,7 @@ class common::pubkey {
     owner   => 1000,
     group   => 1000,
     mode    => '0600',
-    content => template('common/authorized_keys'),
+    content => template('base/authorized_keys'),
     require => File['/home/okkun/.ssh']
   }
 }

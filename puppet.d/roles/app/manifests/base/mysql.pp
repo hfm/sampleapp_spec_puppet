@@ -1,4 +1,4 @@
-class app::common::mysql {
+class app::base::mysql {
   package{ "mysql-devel":
     ensure	=> installed
   }

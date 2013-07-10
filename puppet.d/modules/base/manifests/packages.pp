@@ -1,4 +1,4 @@
-class common::packages {
+class base::packages {
   $packages = [
     'git',
     'gcc',
