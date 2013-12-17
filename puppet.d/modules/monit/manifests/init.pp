@@ -1,4 +1,5 @@
 class monit {
+
   include monit::install
   include monit::config
   include monit::service
@@ -6,4 +7,5 @@ class monit {
   Class['monit::install']
   -> Class['monit::config']
   -> Class['monit::service']
+
 }
